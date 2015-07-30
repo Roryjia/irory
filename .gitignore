@@ -68,3 +68,4 @@ media/
 /src/media/*
 
 .idea/
+settings/__init__.py
