@@ -5,7 +5,13 @@ body {
     padding-top: 50px;
     min-height: 100%;
     position: relative;
+    background: #EEEEEE;
 }
+
+body, a, button, span {
+  cursor: url('http://www.YoonPer.com/wp-content/themes/YoonPer/mouse.cur'),auto;
+}
+
 @media only screen and (max-width: 1000px){
     nav  form{
         display: none;
