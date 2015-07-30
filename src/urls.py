@@ -20,6 +20,12 @@ urlpatterns = patterns(
 
     url(r'^xadmin/', include(xadmin.site.urls), name='xadmin'),
     url(r'^ckeditor/', include('ckeditor.urls'), name='ckeditor'),
+    url(r'^music/', include('music.urls'), name='music'),
+
+    url(r'^/?$', include('music.urls'), name='music'),
+
+    # Test
+    url(r'^test/', include('test.urls'), name='test')
 )
 
 from django.conf import settings
