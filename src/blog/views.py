@@ -20,3 +20,9 @@ class BlogList(PageView):
     model = Blog
 
     template_name = 'blog/list.html'
+
+    def get_datalist(self):
+
+        queryset = self.model.objects.select_related('tags').\
+            filter(is_deleted=False, is_active=True)
+        return queryset

@@ -2,18 +2,35 @@
 {% load staticfiles %}
 
 {% block header %}
+    <style type="text/css">
+        .blog-name{
+            margin: 20px 0 12px 0;
+            font-size: x-large;
+        }
+        .blog{
+            margin: 25px 0;
+        }
+        @media only screen and (min-width: 1000px){
+            .blog {
+                width: 500px;
+            }
+        }
+    </style>
+
 {% endblock %}
 
 {% block title %}歌曲每日－小情歌{% endblock %}
 
 {% block body %}
-    <div class="container music">
+    <div class="container">
         {% for b in items %}
-        <div>
-            <p>{{ b.name }}</p>
-
-            {{ b.content|safe }}
-        </div>
+            <div class="blog" data-id="{{ b.id }}">
+                <p class="blog-name">{{ b.name }}</p>
+                <p class="blog-info">标签：{% for t in b.tags.all %}{{ t.name }}{% if not forloop.last %} | {% endif %}{% endfor %} 时间：{{ b.create_time|date:"Y年m月d日 D" }}</p>
+                <div class="blog-content">
+                    {{ b.content|safe|truncatechars:120 }}
+                </div>
+            </div>
         {% endfor %}
     </div>
 
