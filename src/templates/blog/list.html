@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+{% endblock %}
+
+{% block title %}歌曲每日－小情歌{% endblock %}
+
+{% block body %}
+    <div class="container music">
+        {% for b in items %}
+        <div>
+            <p>{{ b.name }}</p>
+
+            {{ b.content|safe }}
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
