@@ -14,7 +14,13 @@ from .mixins import JsonResponseMixin, PaginationMixin
 
 
 class BaseView(TemplateView):
-    pass
+
+    package = None
+
+    def get_context_data(self, **kwargs):
+        kwargs = super(BaseView, self).get_context_data(**kwargs)
+        kwargs.update(package=self.package)
+        return kwargs
 
 
 class PageView(PaginationMixin, JsonResponseMixin, BaseView):

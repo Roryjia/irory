@@ -9,11 +9,9 @@ __author__ = 'rory'
 
 from django.conf.urls import patterns, url
 
-from .views import TestView, ValidateCode, Qrcode
+from .views import TestView
 
 urlpatterns = patterns(
     '',
     url('^/?$', TestView.as_view(), name='test_view'),
-    url('^code/?$', ValidateCode.as_view(), name='validate_view'),
-    url('^qrcode/?$', Qrcode.as_view(), name='qrcode_view'),
 )

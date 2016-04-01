@@ -2,36 +2,28 @@
 {% load staticfiles %}
 
 {% block header %}
-    <style type="text/css">
-        .blog-name{
-            margin: 20px 0 12px 0;
-            font-size: x-large;
-        }
-        .blog{
-            margin: 25px 0;
-        }
-        @media only screen and (min-width: 1000px){
-            .blog {
-                width: 500px;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 {% endblock %}
 
-{% block title %}歌曲每日－小情歌{% endblock %}
+{% block title %}博客首页{% endblock %}
 
 {% block body %}
     <div class="container">
-        {% for b in items %}
-            <div class="blog" data-id="{{ b.id }}">
-                <p class="blog-name">{{ b.name }}</p>
-                <p class="blog-info">标签：{% for t in b.tags.all %}{{ t.name }}{% if not forloop.last %} | {% endif %}{% endfor %} 时间：{{ b.create_time|date:"Y年m月d日 D" }}</p>
-                <div class="blog-content">
-                    {{ b.content|safe|truncatechars:120 }}
-                </div>
+        <div class="row">
+            <div class="col-xs-6">
+                {% for b in items %}
+                    <a class="blog col-xs-12" data-id="{{ b.id }}" href="{% url 'blog_detail' b.id %}">
+                        <p class="blog-name">{{ b.name }}</p>
+                        <p class="blog-info">标签：{% for t in b.tags.all %}{{ t.name }}{% if not forloop.last %} | {% endif %}{% endfor %} 时间：{{ b.create_time|date:"Y年m月d日 D" }}</p>
+                        <div class="blog-content">
+                            {{ b.content|safe|truncatechars:120 }}
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
-        {% endfor %}
+            <div class="blog-nav col-xs-6">
+            </div>
+        </div>
     </div>
 
 {% endblock %}

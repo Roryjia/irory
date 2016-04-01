@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block title %}博客首页 -- {{ blog.name }} {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="blog col-xs-12" data-id="{{ blog.id }}">
+                    <p class="blog-name">{{ blog.name }}</p>
+                    <p class="blog-info">标签：{% for t in blog.tags.all %}{{ blog.name }}{% if not forloop.last %} | {% endif %}{% endfor %} 时间：{{ blog.create_time|date:"Y年m月d日 D" }}</p>
+                    <div class="blog-content">
+                        {{ blog.content|safe }}
+                    </div>
+                </div>
+            </div>
+            <div class="blog-nav col-xs-6" style="height: 700px">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -37,3 +37,8 @@ body, a, button, span {
     background-color: #FFF0F0;
     font-family: "微软雅黑", "黑体", "Courier New", Courier, monospace;
 }
+
+.mine p span {
+    font-size: 90%;
+    color: #c7254e;
+}

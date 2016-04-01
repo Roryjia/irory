@@ -26,6 +26,7 @@ urlpatterns = patterns(
     url(r'^blog/', include('blog.urls'), name='blog'),
     url(r'^music/', include('music.urls'), name='music'),
     url(r'^/?$', include('music.urls'), name='music'),
+    url(r'^tool/', include('tool.urls'), name='tool'),
 
     # Test
     url(r'^test/', include('test.urls'), name='test')
