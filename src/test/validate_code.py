@@ -132,4 +132,4 @@ def create_validate_code(size=(120, 30),
 
 if __name__ == "__main__":
     code_img = create_validate_code()
-    code_img.save("validate.gif", "GIF")
+    code_img[0].save("validate.gif", "GIF")

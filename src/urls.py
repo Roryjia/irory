@@ -18,11 +18,13 @@ xversion.register_models()
 urlpatterns = patterns(
     '',
 
+    # 公用第三方
     url(r'^xadmin/', include(xadmin.site.urls), name='xadmin'),
     url(r'^ckeditor/', include('ckeditor.urls'), name='ckeditor'),
-    url(r'^music/', include('music.urls'), name='music'),
-    url(r'^blog/', include('blog.urls'), name='blog'),
 
+    # 各个模块
+    url(r'^blog/', include('blog.urls'), name='blog'),
+    url(r'^music/', include('music.urls'), name='music'),
     url(r'^/?$', include('music.urls'), name='music'),
 
     # Test
