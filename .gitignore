@@ -1,7 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.png
 
 # C extensions
 *.so
@@ -14,6 +13,7 @@ develop-eggs/
 dist/
 downloads/
 eggs/
+.eggs/
 lib/
 lib64/
 parts/
@@ -37,9 +37,11 @@ pip-delete-this-directory.txt
 htmlcov/
 .tox/
 .coverage
+.coverage.*
 .cache
 nosetests.xml
 coverage.xml
+*,cover
 
 # Translations
 *.mo
@@ -54,18 +56,14 @@ docs/_build/
 # PyBuilder
 target/
 
+.idea
+# for cert file
+.pem
+cert
+.p12
+.DS_Store
+
+# for upload file
+src/media
+static
 src/settings/__init__.py
-
-media/
-
-/src/base_settings/__init__.py
-/src/server_c_api/settings/__init__.py
-/src/server_b_api/settings/__init__.py
-/src/server_c_wechat/settings/__init__.py
-/src/server_r_api/settings/__init__.py
-/src/server_u_api/settings/__init__.py
-
-/src/media/*
-
-.idea/
-settings/__init__.py
