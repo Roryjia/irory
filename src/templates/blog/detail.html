@@ -5,24 +5,27 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 {% endblock %}
 
-{% block title %}博客首页 -- {{ blog.name }} {% endblock %}
+{% block title %}博客详情 -- {{ blog.name }} {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-8">
+            <div class="blog-content col-xs-9">
                 <div class="blog col-xs-12" data-id="{{ blog.id }}">
                     <p class="blog-name">{{ blog.name }}</p>
-                    <p class="blog-info">标签：{% for t in blog.tags.all %}{{ blog.name }}{% if not forloop.last %} | {% endif %}{% endfor %} 时间：{{ blog.create_time|date:"Y年m月d日 D" }}</p>
+                        <p class="blog-info">
+                            <i class="fa fa-bookmark" aria-hidden="true"></i>
+                            {% for t in blog.tags.all %}
+                                <span href="javascript:void(0);" class="btn btn-info btn-xs">{{ blog.name }}</span>
+                            {% endfor %}
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            {{ blog.create_time|date:"Y年m月d日 D" }}</p>
                     <div class="blog-content">
                         {{ blog.content|safe }}
                     </div>
                 </div>
             </div>
-            <div class="blog-nav col-xs-4" style="height: 100%">
-
-            </div>
+            <div class="blog-nav col-xs-3"></div>
         </div>
     </div>
-
 {% endblock %}
