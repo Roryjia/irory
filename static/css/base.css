@@ -6,10 +6,15 @@ body {
     min-height: 100%;
     position: relative;
     background: #EEEEEE;
+    min-width: 460px;
 }
 
 body, a, button, span {
   cursor: url('imgs/mouse.cur'),auto;
+}
+
+nav {
+    min-width: 460px;
 }
 
 @media only screen and (max-width: 1000px){
