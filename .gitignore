@@ -65,5 +65,5 @@ cert
 
 # for upload file
 src/media
-static
+#static
 src/settings/__init__.py

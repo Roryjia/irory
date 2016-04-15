@@ -1,0 +1,16 @@
+.blog-name{
+    margin: 20px 0 12px 0;
+    font-size: x-large;
+}
+a.blog{
+    margin: 25px 0;
+    text-decoration: none;
+}
+@media only screen and (max-width: 600px){
+    .blog-nav{
+        display: none;
+    }
+    .col-xs-6 {
+        width: 100%;
+    }
+}
