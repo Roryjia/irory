@@ -14,4 +14,5 @@ class TestView(BaseView):
     测试页面
     """
 
-    template_name = 'blog/test.html'
+    # template_name = 'test/blog-1.html'
+    template_name = 'test/music-1.html'

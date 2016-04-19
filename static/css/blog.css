@@ -6,8 +6,9 @@ div.blog{
     font-size: x-large;
 }
 a.blog{
-    margin: 25px 0;
+    display: block;
     text-decoration: none;
+    margin-bottom: 8px;
 }
 @media only screen and (max-width: 600px){
     .blog-nav{

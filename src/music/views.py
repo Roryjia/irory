@@ -14,5 +14,6 @@ class MusicIndex(BaseView):
     每日推荐音乐
     """
     package = 'music'
-    template_name = 'music/index.html'
+    # template_name = 'music/index.html'
+    template_name = 'test/music-1.html'
 

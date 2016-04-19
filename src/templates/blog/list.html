@@ -22,7 +22,7 @@
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                             {{ b.create_time|date:"Y年m月d日 D" }}</p>
                         <div class="blog-content">
-                            {{ b.content|safe|truncatechars:120 }}
+                            {{ b.content|safe|truncatechars_html:80 }}
                         </div>
                     </a>
                 {% endfor %}

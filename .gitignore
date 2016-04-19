@@ -64,6 +64,6 @@ cert
 .DS_Store
 
 # for upload file
-src/media
+#src/media
 #static
 src/settings/__init__.py

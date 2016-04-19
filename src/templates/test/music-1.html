@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <link rel="stylesheet" href="{% static 'css/test/music-1.css' %}">
+    <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+{% endblock %}
+
+{% block title %}歌曲每日－小情歌{% endblock %}
+
+{% block body %}
+<div id="background"></div>
+<div id="player">
+	<div class="cover"></div>
+	<div class="ctrl">
+		<div class="tag">
+			<strong>Title</strong>
+			<span class="artist">Artist</span>
+			<span class="album">Album</span>
+		</div>
+		<div class="control">
+			<div class="left">
+				<div class="rewind icon"></div>
+				<div class="playback icon"></div>
+				<div class="fastforward icon"></div>
+			</div>
+			<div class="volume right">
+				<div class="mute icon left"></div>
+				<div class="slider left">
+					<div class="pace"></div>
+				</div>
+			</div>
+		</div>
+		<div class="progress">
+			<div class="slider">
+				<div class="loaded"></div>
+				<div class="pace"></div>
+			</div>
+			<div class="timer left">0:00</div>
+			<div class="right">
+				<div class="repeat icon"></div>
+				<div class="shuffle icon"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<ul id="playlist"></ul>
+
+<script type="application/javascript">
+    var playlist = [
+        {
+            title: '德国第一装甲师进行曲',
+            artist: '德国',
+            album: '德国第一装甲师进行曲.mp3',
+            cover:'{% static 'image/test/music-1/1.jpg' %}',
+            mp3: 'http://www.17sucai.com/preview/197117/2014-09-18/1/mp3/deguo.mp3',
+            ogg: ''
+        },
+        {
+            title: '模特',
+            artist: '德国',
+            album: '德国第一装甲师进行曲.mp3',
+            cover:'{% static 'image/test/music-1/1.jpg' %}',
+            mp3: '/media/music/1.mp3',
+            ogg: ''
+        },
+        {
+            title: '亡灵序曲',
+            artist: '魔兽世界',
+            album: '魔兽世界 - 亡灵序曲.mp3',
+            cover: '{% static 'image/test/music-1/1.jpg' %}',
+            mp3: 'http://www.17sucai.com/preview/197117/2014-09-18/1/mp3/The%20Dawn.mp3',
+            ogg: ''
+        },
+        {
+            title: 'chenparty dj.mp3',
+            artist: '德国童声',
+            album: 'chenparty 超好听的德国童声 dj.mp3',
+            cover: '{% static 'image/test/music-1/1.jpg' %}',
+            mp3: 'http://www.17sucai.com/preview/197117/2014-09-18/1/mp3/chenparty%20dj.mp3',
+            ogg: ''
+        }
+    ];
+</script>
+
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/music-1.js' %}"></script>
+{% endblock %}
+{#</body>#}
+{#</html>#}
