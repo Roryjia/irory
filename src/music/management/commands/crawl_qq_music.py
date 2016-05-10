@@ -79,19 +79,19 @@ class Command(BaseCommand):
             if not os.path.exists(os.path.join(settings.BASE_DIR, _base_image)):
                 os.mkdir(os.path.join(settings.BASE_DIR, _base_image))
             for m in data:
-                print u'`{}` start download ....'.format(m['song_name'])
-                try:
-                    urllib.urlretrieve(m.pop('song_mp3_url'),
-                                       os.path.join(settings.BASE_DIR, _base_mp3, '{}.mp3'.format(m['song_name'])))
-                    urllib.urlretrieve(m.pop('album_image_url'),
-                                       os.path.join(settings.BASE_DIR, _base_image, '{}.jpg'.format(m['song_name'])))
-                except Exception as e:
-                    self.stdout.write(self.style.ERROR(u'download `{}`Have an error: `{}`'.format(m['song_name'], e)))
-                    continue
-
                 try:
                     Music.objects.get(song_id=m['song_id'])
                 except Music.DoesNotExist:
+                    print u'`{}` start download ....'.format(m['song_name'])
+                    try:
+                        urllib.urlretrieve(m.pop('song_mp3_url'),
+                                           os.path.join(settings.BASE_DIR, _base_mp3, '{}.mp3'.format(m['song_name'])))
+                        urllib.urlretrieve(m.pop('album_image_url'),
+                                           os.path.join(settings.BASE_DIR, _base_image, '{}.jpg'.format(m['song_name'])))
+                    except Exception as e:
+                        self.stdout.write(self.style.ERROR(u'download `{}`Have an error: `{}`'.format(m['song_name'], e)))
+                        continue
+
                     music = Music(**m)
                     music.save()
                 else:
