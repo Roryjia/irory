@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'ckeditor',
 
     'blog',
+    'music',
 )
 
 MIDDLEWARE_CLASSES = (
