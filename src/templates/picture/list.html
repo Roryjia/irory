@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+    <style type="text/css">
+    #waterfall-container{
+        margin-top: 40px;
+    }
+    .list-group {
+        width:280px;
+        padding: 10px 10px;
+    }
+    </style>
+{% endblock %}
+
+{% block title %}每日图片分享{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="waterfall-container">
+
+                    {% for m in music %}
+                    <ul class="list-group" >
+                        <li class="list-group-item"> <a href="javascript:;"> <img onclick="playing(this)" src="{{ m.album_image }}" > </a> </li>
+                        <li class="list-group-item">
+                            <button type="button" class="btn btn-default btn-xs" title="thumb up"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+                            <button type="button" class="btn btn-default btn-xs" title="thumb down"><span class="glyphicon glyphicon-thumbs-down"></span></button>
+                            <button type="button" class="btn btn-default btn-xs pull-right" title="pin"><span class="glyphicon glyphicon-pushpin"></span></button>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <!--<div class="media-left"> <a href="javascript:;"> <img class="media-object img-rounded" style="width: 30px; height: 30px;" src="{% static 'image/favicon.ico' %}"> </a> </div>-->
+                                <div class="media-body">
+{#                                    <h5 class="media-heading">Rory</h5>#}
+                                    <h5>{{ m.singer }} - {{ m.song_name }}</h5> </div> </div>
+{#                                    <small>{{ m.singer }} - {{ m.song_name }}</small> </div> </div>#}
+                                <audio><source src="{{ m.song_mp3 }}"></audio>
+                        </li>
+                    </ul>
+                    {% endfor %}
+
+{#                    {% for m in music %}#}
+{#                        <div class="pin"><img src="{{ m.album_image }}" /></div>#}
+{#                    {% endfor %}#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap-waterfall.js' %}"></script>
+    <script>
+    var playing = function(i){
+        // 现在的播放
+        var audio = $(i).parents('ul').find('audio');
+        if(!audio.prop('paused')){
+            audio.trigger("pause");
+            return
+        } else {
+            $('audio').each(function(i, o){
+               if(!$(o).prop('paused')){
+                   $(o).trigger("pause");
+                   return false;
+               }
+            });
+        }
+        audio.trigger("play");
+    };
+    $(document).ready(function () {
+        $('#waterfall-container').waterfall();
+    });
+    </script>
+{% endblock %}
