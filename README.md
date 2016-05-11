@@ -1,4 +1,4 @@
-**[IRory Site](javascript:void\(\))**
+# [IRory Site]()
 
 _2016.05.11._ 增加瀑布流图片模块
 _2016.05.10_ 爬取QQ音乐热榜TOP100, 增加音乐模块
