@@ -6,6 +6,8 @@
 #  / / (  (/ / (    /
 #                  /
 
+import random
+
 from core.views import BaseView
 from music.models import Music
 
@@ -16,18 +18,11 @@ class MusicIndex(BaseView):
     """
     package = 'music'
     template_name = 'music/list.html'
-    # template_name = 'music/index.html'
-    # template_name = 'test/music-1.html'
 
     def get_context_data(self, **kwargs):
+        _s = random.choice(xrange(1, 70))
         kwargs.update(
-            music=Music.objects.all()[20:40]
+            music=Music.objects.all()[_s:_s+20],
+            QINIU_URL='http://7xwmvs.com1.z0.glb.clouddn.com/'
         )
         return super(MusicIndex, self).get_context_data(**kwargs)
-
-    # def get(self, request, *args, **kwargs):
-    #     kwargs.update(
-    #         music=Music.objects.all()
-    #     )
-    #     return super(MusicIndex, self).get()
-

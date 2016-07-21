@@ -24,7 +24,7 @@
 
                     {% for m in music %}
                     <ul class="list-group" >
-                        <li class="list-group-item"> <a href="javascript:;"> <img onclick="playing(this)" src="{{ m.album_image }}" > </a> </li>
+                        <li class="list-group-item"> <a href="javascript:;"> <img onclick="playing(this)" src="{{ QINIU_URL }}{{ m.album_image }}" > </a> </li>
                         <li class="list-group-item">
                             <button type="button" class="btn btn-default btn-xs" title="thumb up"><span class="glyphicon glyphicon-thumbs-up"></span></button>
                             <button type="button" class="btn btn-default btn-xs" title="thumb down"><span class="glyphicon glyphicon-thumbs-down"></span></button>
@@ -37,7 +37,7 @@
 {#                                    <h5 class="media-heading">Rory</h5>#}
                                     <h5>{{ m.singer }} - {{ m.song_name }}</h5> </div> </div>
 {#                                    <small>{{ m.singer }} - {{ m.song_name }}</small> </div> </div>#}
-                                <audio><source src="{{ m.song_mp3 }}"></audio>
+                                <audio><source src="{{ QINIU_URL }}{{ m.song_mp3 }}"></audio>
                         </li>
                     </ul>
                     {% endfor %}

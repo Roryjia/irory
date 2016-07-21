@@ -51,8 +51,8 @@
                 'title': '{{ m.song_name }}',
                 'artist': '{{ m.singer }}',
                 'album': '{{ m.album_name }}',
-                'cover': '{{ m.album_image }}',
-                'mp3': '{{ m.song_mp3 }}',
+                'cover': '{{ QINIU_URL }}{{ m.album_image }}',
+                'mp3': '{{ QINIU_URL }}{{ m.song_mp3 }}',
                 'ogg': ''
             }{% if not forloop.last %},{% endif %}{% endfor %}];
 </script>

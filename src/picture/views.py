@@ -20,6 +20,7 @@ class PictureIndex(BaseView):
 
     def get_context_data(self, **kwargs):
         kwargs.update(
-            music=Music.objects.all()
+            music=Music.objects.all(),
+            QINIU_URL='http://7xwmvs.com1.z0.glb.clouddn.com/'
         )
         return super(PictureIndex, self).get_context_data(**kwargs)
