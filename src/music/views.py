@@ -20,9 +20,9 @@ class MusicIndex(BaseView):
     template_name = 'music/list.html'
 
     def get_context_data(self, **kwargs):
-        _s = random.choice(xrange(1, 70))
+        _s = random.choice(xrange(1, 102))
         kwargs.update(
-            music=Music.objects.all()[_s:_s+20],
+            music=Music.objects.order_by('-id').all()[_s:_s + 20],
             QINIU_URL='http://7xwmvs.com1.z0.glb.clouddn.com/'
         )
         return super(MusicIndex, self).get_context_data(**kwargs)
