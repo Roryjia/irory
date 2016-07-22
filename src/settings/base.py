@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 
     'blog',
     'music',
+    'live',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block header %}
+    <style type="text/css">
+    body {
+      background: #333;
+      color: #fff;
+    }
+    #player {
+        margin: 20px auto;
+        width: 80%;
+        height: 500px;
+    }
+    .left {
+        display: none;
+    }
+    </style>
+{% endblock %}
+
+{% block title %}{% if live %}{{ live.live_name }}{% else %}敬请期待{% endif %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div id="player"></div>
+            </div>
+            <script type="text/javascript" src="{% static 'ckplayer/ckplayer.js' %}" charset="utf-8"></script>
+            <script type="text/javascript">
+                var flashvars={
+                    f:"{% static 'ckplayer/m3u8.swf' %}",
+                    c:1,
+                    b:1,
+                    p:1,
+                    s:4,
+                    lv:1,
+                    a:encodeURIComponent(decodeURIComponent("{{ live.live_m3u8 }}")),
+                    i:'http://www.ckplayer.com/static/images/cqdw.jpg'
+                    };
+                var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+                var video=['{{ live.live_m3u8 }}'];
+                CKobject.embed("{% static 'ckplayer/ckplayer.swf' %}",'player','ckplayer','100%','100%',false,flashvars,video,params);
+            </script>
+        </div>
+    </div>
+{% endblock %}

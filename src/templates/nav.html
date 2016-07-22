@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav">
                 <li {% if package == 'blog' %}class="active"{% endif %} ><a href="{% url 'blog_list' %}">博客</a></li>
                 <li {% if package == 'music' %}class="active"{% endif %}><a href="{% url 'music_index' %}">音乐🎵</a></li>
-                <li {% if package == 'live' %}class="active"{% endif %}><a href="javascript:void(0)">影视那些事</a></li>
+                <li {% if package == 'live' %}class="active"{% endif %}><a href="{% url 'live_detail' %}">直播那些事</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">其他<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">

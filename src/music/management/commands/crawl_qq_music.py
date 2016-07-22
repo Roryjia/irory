@@ -11,7 +11,7 @@ import base64
 import urllib
 import os
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 import requests
 
 from music.models import Music

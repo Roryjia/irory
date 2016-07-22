@@ -24,8 +24,9 @@ urlpatterns = patterns(
     # 各个模块
     url(r'^blog/', include('blog.urls'), name='blog'),
     url(r'^music/', include('music.urls'), name='music'),
+    url(r'^live/', include('live.urls'), name='live'),
     url(r'^picture/', include('picture.urls'), name='picture'),
-    url(r'^/?$', include('blog.urls'), name='music'),
+    url(r'^/?$', include('blog.urls'), name='blog'),
     url(r'^tool/', include('tool.urls'), name='tool'),
 
     # Test
