@@ -12,15 +12,13 @@ p.blog-info{
     margin-top: 5px;
     margin-bottom: 20px;
 }
-a.blog{
+.blog{
     display: block;
     text-decoration: none;
     margin: 15px auto;
 }
 div.blog-page{
-    margin: 20px auto;
-    height: 20px;
-    background-color: red;
+    margin-bottom: 50px;
 }
 @media only screen and (max-width: 600px){
     .blog-nav{
