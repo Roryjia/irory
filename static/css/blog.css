@@ -13,9 +13,11 @@ p.blog-info{
     margin-bottom: 20px;
 }
 .blog{
+    margin: 15px auto;
+}
+a.blog{
     display: block;
     text-decoration: none;
-    margin: 15px auto;
 }
 div.blog-page{
     margin-bottom: 50px;
