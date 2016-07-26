@@ -120,6 +120,10 @@ CKEDITOR_CONFIGS = {
         # codesnippet plugins
         'extraPlugins': 'codesnippet',
         'codeSnippet_theme': 'monokai_sublime',
+
+        # width, height
+        'height': 300,
+        'width': 800,
     }
 }
 
