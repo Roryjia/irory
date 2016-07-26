@@ -25,5 +25,5 @@ class Music(BaseModel):
         return self.song_name
 
     class Meta:
-        verbose_name = u'QQ巅峰榜TOP100歌曲'
-        verbose_name_plural = u'QQ巅峰榜TOP100歌曲'
+        verbose_name = u'QQ巅峰榜歌曲'
+        verbose_name_plural = u'QQ巅峰榜歌曲'

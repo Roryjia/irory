@@ -8,6 +8,8 @@
 
 import random
 
+from django.conf import settings
+
 from core.views import BaseView
 from music.models import Music
 
@@ -23,6 +25,6 @@ class MusicIndex(BaseView):
         _s = random.choice(xrange(1, 102))
         kwargs.update(
             music=Music.objects.order_by('-id').all()[_s:_s + 20],
-            QINIU_URL='http://7xwmvs.com1.z0.glb.clouddn.com/'
+            QINIU_URL=getattr(settings, 'QINIU_QQ_MUSIC', '')
         )
         return super(MusicIndex, self).get_context_data(**kwargs)

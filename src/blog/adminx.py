@@ -19,20 +19,22 @@ class BlogCategoryAdmin(object):
 
 class BlogTagAdmin(object):
     refresh_times = (3, 5)
+    list_display = ('name', 'is_active', 'update_time')
     model_icon = 'fa fa-bookmark'
 
 
 class BlogAdmin(object):
     form = BlogAdminForm
-    show_detail_fields = ['cate', 'tags']
-    list_display = ('cate', 'tags', 'name', 'display_content', 'pv', 'is_top')
+    # show_detail_fields = ['cate', 'tags']
+    list_display = ('name', 'pv', 'cate', 'tags', 'is_top')
     model_icon = 'fa fa-book'
+    ordering = ['-pv', ]
 
-    def display_content(self, obj):
-        return obj.content or ''
+    # def display_content(self, obj):
+    #     return obj.content or ''
 
-    display_content.allow_tags = True
-    display_content.short_description = u'内容'
+    # display_content.allow_tags = True
+    # display_content.short_description = u'内容'
 
 xadmin.site.register(BlogCategory, BlogCategoryAdmin)
 xadmin.site.register(BlogTag, BlogTagAdmin)

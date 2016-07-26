@@ -163,3 +163,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+# qiniu cloud static url
+QINIU_QQ_MUSIC = 'http://7xwmvs.com1.z0.glb.clouddn.com/'
+

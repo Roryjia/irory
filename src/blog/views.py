@@ -6,7 +6,7 @@
 #  / / (  (/ / (    /
 #                  /
 
-from django.db.models import Count
+from django.db.models import Count, F
 from django.http import Http404
 
 from core.views import PageView, BaseView
@@ -49,6 +49,9 @@ class BlogDetail(BaseView):
             filter(id=args[0], is_deleted=False, is_active=True).first()
         if not blog:
             raise Http404
+
+        blog.pv = F('pv') + 1
+        blog.save()
 
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
