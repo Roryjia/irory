@@ -25,7 +25,18 @@
                     </div>
                 </div>
             </div>
-            <div class="blog-nav col-xs-3"></div>
+            <div class="blog-nav col-xs-3">
+                <div class="blog-category">
+                    <p>
+                        <i class="fa fa-cubes" aria-hidden="true"></i>博客分类
+                    </p>
+                    {% for c in cates %}
+                        <a href="{% url 'blog_list' %}?cid={{ c.id }}">
+                            {{ c.name }}({{ c.num_cates }})
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

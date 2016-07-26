@@ -30,3 +30,14 @@ div.blog-page{
         width: 100%;
     }
 }
+
+.blog-nav{
+    margin-top: 45px;
+}
+.blog-category a {
+    text-decoration: none;
+    font-size: large;
+}
+.blog-category p {
+    color: #337ab7;
+}

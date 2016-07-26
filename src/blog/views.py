@@ -6,11 +6,12 @@
 #  / / (  (/ / (    /
 #                  /
 
+from django.db.models import Count
 from django.http import Http404
 
 from core.views import PageView, BaseView
 
-from .models import Blog
+from .models import Blog, BlogCategory
 
 
 class BlogList(PageView):
@@ -26,7 +27,14 @@ class BlogList(PageView):
 
         queryset = self.model.objects.select_related('tags').\
             filter(is_deleted=False, is_active=True)
+
         return queryset
+
+    def get(self, request, *args, **kwargs):
+        # 获取所有的博客分类
+        cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
+        kwargs.update(cates=cates)
+        return super(BlogList, self).get(request, *args, **kwargs)
 
 
 class BlogDetail(BaseView):
@@ -42,5 +50,7 @@ class BlogDetail(BaseView):
         if not blog:
             raise Http404
 
-        kwargs.update(blog=blog)
+        # 获取所有的博客分类
+        cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
+        kwargs.update(blog=blog, cates=cates)
         return super(BlogDetail, self).get(request, *args, **kwargs)
