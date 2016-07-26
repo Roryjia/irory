@@ -1,14 +1,26 @@
 div.blog{
     color: #337ab7;
 }
-.blog-name{
-    margin: 20px 0 12px 0;
+div.blogs{
+    padding-top: 20px;
+}
+p.blog-name{
+    margin: 10px auto;
     font-size: x-large;
+}
+p.blog-info{
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 a.blog{
     display: block;
     text-decoration: none;
-    margin-bottom: 8px;
+    margin: 15px auto;
+}
+div.blog-page{
+    margin: 20px auto;
+    height: 20px;
+    background-color: red;
 }
 @media only screen and (max-width: 600px){
     .blog-nav{

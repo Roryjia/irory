@@ -10,7 +10,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="blog-content col-xs-9">
+            <div class="blogs col-xs-9">
                 {% for b in items %}
                     <a class="blog col-xs-12" data-id="{{ b.id }}" href="{% url 'blog_detail' b.id %}">
                         <p class="blog-name">{{ b.name }}</p>
@@ -26,6 +26,7 @@
                         </div>
                     </a>
                 {% endfor %}
+                <a class="blog col-xs-12"></a>
             </div>
             <div class="blog-nav col-xs-3">
                 <div class="row"></div>
