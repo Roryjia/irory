@@ -11,7 +11,7 @@ from django.http import Http404
 
 from core.views import PageView, BaseView
 
-from .models import Blog, BlogCategory
+from .models import Blog, BlogCategory, BlogView
 
 
 class BlogList(PageView):
@@ -50,8 +50,12 @@ class BlogDetail(BaseView):
         if not blog:
             raise Http404
 
+        # 记录博客浏览量
         blog.pv = F('pv') + 1
         blog.save()
+
+        # 详细记录客户端情况
+        BlogView(blog=blog, ip=self._ip, city=self._city).save()
 
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')

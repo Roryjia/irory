@@ -12,7 +12,8 @@ from django.utils import timezone
 
 def global_variate(request):
     return {
-        'site_name': getattr(settings, 'SITE_NAME', 'http://rory.jia'),
-        'current_year': timezone.now().year
+        'site_name': getattr(settings, 'SITE_NAME', 'http://irory.me'),
+        'current_year': timezone.now().year,
+        'site_title': "IRory's Admin"
     }
 

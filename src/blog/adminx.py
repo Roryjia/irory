@@ -8,7 +8,7 @@
 
 import xadmin
 
-from .models import BlogCategory, BlogTag, Blog
+from .models import BlogCategory, BlogTag, Blog, BlogView
 from .adminforms import BlogAdminForm
 
 
@@ -36,7 +36,15 @@ class BlogAdmin(object):
     # display_content.allow_tags = True
     # display_content.short_description = u'内容'
 
+
+class BlogViewAdmin(object):
+    list_display = ('blog', 'ip', 'city', 'create_time')
+    model_icon = 'fa fa-eye'
+    ordering = ['-create_time', ]
+
+
 xadmin.site.register(BlogCategory, BlogCategoryAdmin)
 xadmin.site.register(BlogTag, BlogTagAdmin)
 xadmin.site.register(Blog, BlogAdmin)
+xadmin.site.register(BlogView, BlogViewAdmin)
 

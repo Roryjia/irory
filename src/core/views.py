@@ -6,6 +6,7 @@
 #  / / (  (/ / (    /
 #                  /
 
+import IP
 from django.views.generic import TemplateView
 
 from .mixins import JsonResponseMixin, PaginationMixin
@@ -19,6 +20,22 @@ class BaseView(TemplateView):
         kwargs = super(BaseView, self).get_context_data(**kwargs)
         kwargs.update(package=self.package)
         return kwargs
+
+    @property
+    def _ip(self):
+        x_forwarded_for = self.request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = self.request.META.get('REMOTE_ADDR', '')
+        return ip
+
+    @property
+    def _city(self):
+        try:
+            return IP.find(self._ip).split('\t')[-1]
+        except Exception as e:
+            return ''
 
 
 class PageView(PaginationMixin, JsonResponseMixin, BaseView):

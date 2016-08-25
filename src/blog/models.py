@@ -49,3 +49,16 @@ class Blog(BaseModel):
     class Meta:
         verbose_name = u'博客'
         verbose_name_plural = u'博客'
+
+
+class BlogView(BaseModel):
+    blog = models.ForeignKey(Blog, verbose_name=u'博客')
+    ip = models.IPAddressField(verbose_name=u'IP')
+    city = models.CharField(max_length=100, verbose_name=u'城市')
+
+    def __unicode__(self):
+        return u'{} - {}'.format(self.blog, self.ip)
+
+    class Meta:
+        verbose_name = u'博客浏览'
+        verbose_name_plural = u'博客浏览'
