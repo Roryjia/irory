@@ -7,8 +7,6 @@
 #                  /
 
 
-import random
-
 from core.views import BaseView
 from live.models import Live
 
@@ -20,13 +18,11 @@ class LiveDetail(BaseView):
     package = 'live'
     template_name = 'live/detail.html'
 
-    def get_context_data(self, **kwargs):
-        live = Live.objects.all()
-        if len(live):
-            live = random.choice(live)
-        else:
-            live = None
+    def get(self, request, *args, **kwargs):
+        print args[0], '------'
+        live = Live.objects.filter(live_code=args[0]).first()
         kwargs.update(
             live=live
         )
-        return super(LiveDetail, self).get_context_data(**kwargs)
+
+        return super(LiveDetail, self).get(request, *args, **kwargs)

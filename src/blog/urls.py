@@ -13,5 +13,5 @@ from .views import BlogList, BlogDetail
 urlpatterns = patterns(
     '',
     url(r'^/?$', BlogList.as_view(), name='blog_list'),
-    url(r'^(\d)+/?$', BlogDetail.as_view(), name='blog_detail')
+    url(r'^(\d+)/?$', BlogDetail.as_view(), name='blog_detail')
 )

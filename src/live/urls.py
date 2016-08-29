@@ -14,5 +14,5 @@ from .views import LiveDetail
 
 urlpatterns = patterns(
     '',
-    url(r'^detail/?$', LiveDetail.as_view(), name='live_detail')
+    url(r'^(\w+)/?$', LiveDetail.as_view(), name='live_detail')
 )
