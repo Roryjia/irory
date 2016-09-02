@@ -19,7 +19,6 @@ class LiveDetail(BaseView):
     template_name = 'live/detail.html'
 
     def get(self, request, *args, **kwargs):
-        print args[0], '------'
         live = Live.objects.filter(live_code=args[0]).first()
         kwargs.update(
             live=live

@@ -11,7 +11,7 @@ from django.http import Http404
 
 from core.views import PageView, BaseView
 
-from .models import Blog, BlogCategory, BlogView
+from .models import Blog, BlogCategory, BlogView, BlogLink
 
 
 class BlogList(PageView):
@@ -33,7 +33,8 @@ class BlogList(PageView):
     def get(self, request, *args, **kwargs):
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
-        kwargs.update(cates=cates)
+        links = BlogLink.objects.order_by('order')
+        kwargs.update(cates=cates, links=links)
         return super(BlogList, self).get(request, *args, **kwargs)
 
 
@@ -59,5 +60,6 @@ class BlogDetail(BaseView):
 
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
-        kwargs.update(blog=blog, cates=cates)
+        links = BlogLink.objects.order_by('order')
+        kwargs.update(blog=blog, cates=cates, links=links)
         return super(BlogDetail, self).get(request, *args, **kwargs)

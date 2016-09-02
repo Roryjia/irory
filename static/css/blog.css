@@ -31,13 +31,32 @@ div.blog-page{
     }
 }
 
-.blog-nav{
+.blog-nav {
     margin-top: 45px;
 }
+.blog-me p {
+    color: #337ab7;
+}
+
+/*.blog-category {*/
+    /*margin: 30px auto;*/
+/*}*/
 .blog-category a {
     text-decoration: none;
-    font-size: large;
 }
 .blog-category p {
     color: #337ab7;
+}
+
+.blog-link {
+    margin: 30px auto;
+}
+.blog-link a {
+    text-decoration: none;
+}
+.blog-link p {
+    color: #337ab7;
+}
+p.title {
+    font-size: x-large;
 }

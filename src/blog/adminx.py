@@ -8,7 +8,7 @@
 
 import xadmin
 
-from .models import BlogCategory, BlogTag, Blog, BlogView
+from .models import BlogCategory, BlogTag, Blog, BlogView, BlogLink
 from .adminforms import BlogAdminForm
 
 
@@ -43,8 +43,15 @@ class BlogViewAdmin(object):
     ordering = ['-create_time', ]
 
 
+class BlogLinkAdmin(object):
+    list_display = ('name', 'site', 'create_time')
+    model_icon = 'fa fa-link'
+    ordering = ['order', ]
+
+
 xadmin.site.register(BlogCategory, BlogCategoryAdmin)
 xadmin.site.register(BlogTag, BlogTagAdmin)
 xadmin.site.register(Blog, BlogAdmin)
 xadmin.site.register(BlogView, BlogViewAdmin)
+xadmin.site.register(BlogLink, BlogLinkAdmin)
 

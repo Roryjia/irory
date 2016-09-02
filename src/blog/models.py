@@ -62,3 +62,16 @@ class BlogView(BaseModel):
     class Meta:
         verbose_name = u'博客浏览'
         verbose_name_plural = u'博客浏览'
+
+
+class BlogLink(BaseModel):
+    name = models.CharField(max_length=100, verbose_name=u'名称')
+    site = models.URLField(verbose_name=u'站点URL')
+    order = models.IntegerField(verbose_name=u'排序')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = u'博客链接'
+        verbose_name_plural = u'博客链接'

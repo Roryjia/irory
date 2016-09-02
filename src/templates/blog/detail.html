@@ -27,13 +27,20 @@
             </div>
             <div class="blog-nav col-xs-3">
                 <div class="blog-category">
-                    <p>
+                    <p class="title">
                         <i class="fa fa-cubes" aria-hidden="true"></i>博客分类
                     </p>
                     {% for c in cates %}
-                        <a href="{% url 'blog_list' %}?cid={{ c.id }}">
-                            {{ c.name }}({{ c.num_cates }})
-                        </a>
+                        <p><a href="{% url 'blog_list' %}?cid={{ c.id }}">{{ c.name }}({{ c.num_cates }})</a></p>
+                    {% endfor %}
+                </div>
+
+                <div class="blog-link">
+                    <p class="title">
+                        <i class="fa fa-link" aria-hidden="true"></i>博客推荐
+                    </p>
+                    {% for l in links %}
+                        <p><a href="{{ l.site }}" target="_blank">{{ l.name }}</a></p>
                     {% endfor %}
                 </div>
             </div>
