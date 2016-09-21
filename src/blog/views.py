@@ -23,14 +23,27 @@ class BlogList(PageView):
 
     template_name = 'blog/list.html'
 
+    cate = None
+
     def get_datalist(self):
-
-        queryset = self.model.objects.select_related('tags').\
-            filter(is_deleted=False, is_active=True)
-
+        queryset = self.model.objects
+        if self.cate:
+            queryset = queryset.filter(cate=self.cate)
+        queryset = queryset.select_related('tags').filter(is_deleted=False, is_active=True)
         return queryset
 
     def get(self, request, *args, **kwargs):
+
+        # 按着分类搜索
+        cid = request.GET.get('cid', '')
+        if cid:
+            if not cid.isdigit():
+                raise Http404
+            try:
+                self.cate = BlogCategory.objects.get(id=cid)
+            except BlogCategory.DoesNotExist:
+                raise Http404
+
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
         links = BlogLink.objects.order_by('order')
