@@ -55,6 +55,7 @@ class BlogView(BaseModel):
     blog = models.ForeignKey(Blog, verbose_name=u'博客')
     ip = models.IPAddressField(verbose_name=u'IP')
     city = models.CharField(max_length=100, verbose_name=u'城市')
+    refer = models.TextField(verbose_name=u'来源URL', default='')
 
     def __unicode__(self):
         return u'{} - {}'.format(self.blog, self.ip)

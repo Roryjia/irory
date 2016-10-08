@@ -69,7 +69,7 @@ class BlogDetail(BaseView):
         blog.save()
 
         # 详细记录客户端情况
-        BlogView(blog=blog, ip=self._ip, city=self._city).save()
+        BlogView(blog=blog, ip=self._ip, city=self._city, refer=self.request.META.get('HTTP_REFERER', '')).save()
 
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')

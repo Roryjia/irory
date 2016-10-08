@@ -38,7 +38,7 @@ class BlogAdmin(object):
 
 
 class BlogViewAdmin(object):
-    list_display = ('blog', 'ip', 'city', 'create_time')
+    list_display = ('blog', 'ip', 'city', 'refer', 'create_time')
     model_icon = 'fa fa-eye'
     ordering = ['-create_time', ]
 
