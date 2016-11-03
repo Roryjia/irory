@@ -11,21 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="blogs col-xs-9">
-                {% for b in items %}
-                    <a class="blog col-xs-12" data-id="{{ b.id }}" href="{% url 'blog_detail' b.id %}">
-                        <p class="blog-name">{{ b.name }}</p>
-                        <p class="blog-info">
-                            <i class="fa fa-bookmark" aria-hidden="true"></i>
-                            {% for t in b.tags.all %}
-                                <span href="javascript:void(0);" class="btn btn-info btn-xs">{{ t.name }}</span>
-                            {% endfor %}
-                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                            {{ b.create_time|date:"Y年m月d日 D" }}</p>
-                        <div class="blog-content">
-                            {{ b.content|safe|truncatechars_html:80 }}
-                        </div>
-                    </a>
-                {% endfor %}
+                {% include 'blog/list_piece.html' %}
             </div>
             <div class="blog-nav col-xs-3">
 
@@ -56,6 +42,25 @@
                 </div>
             </div>
         </div>
-        <div class="blog-page"></div>
+
+        <div class="blog-page">
+            <ul class="pagination">
+                <li {% if current_page == 1 %} class="disabled" {% endif %}><a href="{% if current_page == 1 %} javascript:void(0) {% else %} {% url 'blog_list' %}?page={{ current_page|add:"-1" }} {% endif %}">&laquo;</a></li>
+                {% for i in '*'|rjust:num_pages %}
+                    {% if num_pages <= 5 %}
+                        <li {% if current_page == forloop.counter %} class="active" {% endif %}><span>{{ forloop.counter }}</span></li>
+                    {% else %}
+                        {% if current_page <= 3 and forloop.counter <= 5 %}
+                            <li {% if current_page == forloop.counter %} class="active" {% endif %}><span><a href="{% url 'blog_list' %}?page={{ forloop.counter }}" >{{ forloop.counter }}</a></span></li>
+                        {% elif forloop.counter >= current_page|add:"-2" and forloop.counter <= current_page|add:2 %}
+                            <li {% if current_page == forloop.counter %} class="active" {% endif %}><span><a href="{% url 'blog_list' %}?page={{ forloop.counter }}" >{{ forloop.counter }}</a></span></li>
+                        {% elif current_page >= num_pages|add:"-2" and forloop.counter > num_pages|add:"-5" %}
+                            <li {% if current_page == forloop.counter %} class="active" {% endif %}><span><a href="{% url 'blog_list' %}?page={{ forloop.counter }}" >{{ forloop.counter }}</a></span></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <li {% if current_page == num_pages %} class="disabled" {% endif %}><a href="{% if current_page == num_pages %} javascript:void(0) {% else %} {% url 'blog_list' %}?page={{ current_page|add:1 }} {% endif %}">&raquo;</a></li>
+            </ul>
+        </div>
     </div>
 {% endblock %}

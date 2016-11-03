@@ -25,6 +25,9 @@ class BlogList(PageView):
 
     cate = None
 
+    items_per_page = 5
+    object_list_template_name = 'blog/blog_piece.html'
+
     def get_datalist(self):
         queryset = self.model.objects
         if self.cate:

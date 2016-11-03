@@ -60,3 +60,11 @@ div.blog-page{
 p.title {
     font-size: x-large;
 }
+
+ul.pagination li a {
+    text-decoration: none;
+}
+
+ul.pagination li.active a {
+    color: #ffffff;
+}
