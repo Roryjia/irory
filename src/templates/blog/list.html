@@ -48,7 +48,7 @@
                 <li {% if current_page == 1 %} class="disabled" {% endif %}><a href="{% if current_page == 1 %} javascript:void(0) {% else %} {% url 'blog_list' %}?page={{ current_page|add:"-1" }} {% endif %}">&laquo;</a></li>
                 {% for i in '*'|rjust:num_pages %}
                     {% if num_pages <= 5 %}
-                        <li {% if current_page == forloop.counter %} class="active" {% endif %}><span>{{ forloop.counter }}</span></li>
+                        <li {% if current_page == forloop.counter %} class="active" {% endif %}><span><a href="{% url 'blog_list' %}?page={{ forloop.counter }}" >{{ forloop.counter }}</a></span></li>
                     {% else %}
                         {% if current_page <= 3 and forloop.counter <= 5 %}
                             <li {% if current_page == forloop.counter %} class="active" {% endif %}><span><a href="{% url 'blog_list' %}?page={{ forloop.counter }}" >{{ forloop.counter }}</a></span></li>
