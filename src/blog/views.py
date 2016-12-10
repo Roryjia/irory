@@ -50,7 +50,7 @@ class BlogList(PageView):
         # 获取所有的博客分类
         cates = BlogCategory.objects.annotate(num_cates=Count('blog')).order_by('-num_cates')
         links = BlogLink.objects.order_by('order')
-        kwargs.update(cates=cates, links=links)
+        kwargs.update(cates=cates, links=links, cid=cid)
         return super(BlogList, self).get(request, *args, **kwargs)
 
 
