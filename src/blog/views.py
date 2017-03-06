@@ -32,7 +32,8 @@ class BlogList(PageView):
         queryset = self.model.objects
         if self.cate:
             queryset = queryset.filter(cate=self.cate)
-        queryset = queryset.select_related('tags').filter(is_deleted=False, is_active=True).order_by('-is_top', '-pv')
+        queryset = queryset.select_related('tags').filter(is_deleted=False, is_active=True).order_by('-is_top',
+                                                                                                     '-create_time')
         return queryset
 
     def get(self, request, *args, **kwargs):
